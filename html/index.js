@@ -2,15 +2,19 @@
 
 fetch('http://localhost:3000/api/products')
     .then((response) => response.json())
-    .then((getAnswer) => Product(getAnswer))
+    .then((getAnswer) => {
+        Product(getAnswer)
+    })
 
 function Product(data) {
     const getProduct = data 
-    console.table(data)
 
-
+        data.forEach((everyProduct) => {
+            console.table(data)
+            
+            
     let productHref = document.createElement("a")
-    productHref.href = `./product.html?id = ${data[0]._id}`
+    productHref.href = `./product.html?id = ${data._id}`
     
 
     const inSection = document.querySelector("#items")
@@ -23,22 +27,26 @@ function Product(data) {
     //inser image in article///
     let productImg = document.createElement("img")
     productArticle.appendChild(productImg)
-    productImg.src = data[0].imageUrl
-    productImg.alt =data[0].altTxt
+    productImg.src = everyProduct.imageUrl
+    productImg.alt = everyProduct.altTxt
 
     /// h3///
     let productName = document.createElement("h3")
     productArticle.appendChild(productName)
     productName.classList.add("productName")
-    productName.innerHTML = data[0].name
+    productName.innerHTML = everyProduct.name
 
     /////////insert "p"////////
 
     let ProductDetails = document.createElement("p")
     productArticle.appendChild(ProductDetails)
     ProductDetails.classList.add("productDescription")
-    ProductDetails.innerHTML = data[0].description;
-    }
+    ProductDetails.innerHTML = everyProduct.description;
+    
+})
+
+}
+
 
 /*
 
