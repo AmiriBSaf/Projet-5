@@ -21,10 +21,9 @@ fetch("http://localhost:3000/api/products/" + productId)
        const imageUrl = data.imageUrl
        const name = data.name
        const price = data.price
-       const id = data.id
 
     let image = document.createElement('img')
-    image.src = imageUrl
+    image.src =data.imageUrl
     image.alt = altTxt
     let showImg =  document.querySelector(".item__img")
     showImg.appendChild(image)
@@ -37,11 +36,28 @@ h1.innerHTML = name
 /// insert price
 
 let prix = document.getElementById("price")
-prix.innnerHTML = price
+    prix.textContent = price
+
+//// insert "description"
+
+let text = document.getElementById("description")
+    text.innerHTML = description
+
+////insert color
+
+let productColors = document.getElementById("colors")
+    colors.forEach((itemColor) =>{
+        const colorOptions = document.createElement("option")
+        colorOptions.value = itemColor
+        colorOptions.textContent = itemColor
+        productColors.appendChild(colorOptions)
+        console.log(colorOptions)
 
 
-
+    })
     
+    
+       
 
 }
     
