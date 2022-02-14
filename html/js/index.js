@@ -14,7 +14,7 @@ function Product(data) {
             
             
     let productHref = document.createElement("a")
-    productHref.href = `./product.html?id = ${data._id}`
+    productHref.href = `./product.html?id=${everyProduct._id}`
     
 
     const inSection = document.querySelector("#items")
